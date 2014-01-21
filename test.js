@@ -31,7 +31,7 @@ pushId0:'APA91bHJRkpSjXvlFA7L94ybyalAeW0BxE0Z1K4g99onHvXLIFgptSJDhBIMXckY9HBzaBp
 	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel ' + res.statusCode);
 });
 
-client.post('/sendTravelCompleted', { cost:'25', travelID: '01', device: 'android',
+client.post('/sendTravelCompleted', { cost:'25', travelID: '01', device: 'android', appPayment:'false',
 pushId0:'APA91bHJRkpSjXvlFA7L94ybyalAeW0BxE0Z1K4g99onHvXLIFgptSJDhBIMXckY9HBzaBpEWo4Se9zUCd2KjzWUHCJ5TLac-qF-Hu8ozi7Uoe14ZFRg2_c82xmL4ZXgMfuhec4UUd-eu_SkYsMPRt2bqNZ0K5Uzgpwd2en9454w8-f3c7pyEK0'
  }, function(err, req, res, data) {
 	assert.ifError(err); 
