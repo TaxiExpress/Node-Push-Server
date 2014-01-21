@@ -118,7 +118,7 @@ function sendTravelCompleted(req , res , next){
 	
 	message.addDataWithKeyValue('travelID', req.params.travelID);
 	message.addDataWithKeyValue('cost', req.params.cost);
-	message.addDataWithKeyValue('cost', req.params.appPayment);
+	message.addDataWithKeyValue('appPayment', req.params.appPayment);
 	message.addDataWithKeyValue('code', 702);
 	
 	var sender = new gcm.Sender(GCMID);
