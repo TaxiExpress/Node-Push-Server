@@ -20,6 +20,7 @@ server.use(restify.bodyParser());
 server.use(restify.CORS());
 
 server.post({path : '/sendClosestTaxi' , version: '0.0.1'} , sendClosestTaxi);
+server.post({path : '/sendSelectedTaxi' , version: '0.0.1'} , sendSelectedTaxi);
 server.post({path : '/sendAcceptTravel' , version: '0.0.1'} , sendAcceptTravel);
 server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompleted);
 server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
@@ -69,6 +70,44 @@ function sendClosestTaxi(req , res , next){
 		}
 	});
 }
+
+function sendSelectedTaxi(req , res , next){
+	res.setHeader('Access-Control-Allow-Origin','*');
+
+	var message = new gcm.Message();
+	message.addData('message','a');
+	message.addData('title','sendSelectedTaxi');
+	message.addData('msgcnt','1'); // Shows up in the notification in the status bar
+	message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
+	message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified
+	
+	message.addDataWithKeyValue('travelID', req.params.travelID);
+	message.addDataWithKeyValue('origin', req.params.origin);
+	message.addDataWithKeyValue('startpoint', req.params.startpoint);
+	message.addDataWithKeyValue('valuation', req.params.valuation);
+	message.addDataWithKeyValue('code', 802);
+	
+	var sender = new gcm.Sender(GCMID);
+	var registrationIds = [];
+	if (req.params.pushId != '')
+	registrationIds.push(req.params.pushId0);
+
+	
+	sender.send(message, registrationIds, 4, function (err, result) {
+		if (result.success === 1){
+			res.send(201 , result);
+			saveBD(req.params.device,802,'OK');
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi ' + res.statusCode);
+			return next();	
+		}
+		else{
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi ' + res.statusCode);
+			saveBD(req.params.device,802,error);
+			return next(new restify.InvalidArgumentError((result.results)[0].error));
+		}
+	});
+}
+
 
 function sendAcceptTravel(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
@@ -154,7 +193,7 @@ function sendTravelPaid(req , res , next){
 	
 	message.addDataWithKeyValue('travelID', req.params.travelID);
 	message.addDataWithKeyValue('paid', req.params.paid);
-	message.addDataWithKeyValue('code', 802);
+	message.addDataWithKeyValue('code', 803);
 	
 	var sender = new gcm.Sender(GCMID);
 	var registrationIds = [];
@@ -165,13 +204,13 @@ function sendTravelPaid(req , res , next){
 	sender.send(message, registrationIds, 4, function (err, result) {
 		if (result.success === 1){
 			res.send(201 , result);
-			saveBD(req.params.device,802,'OK');
+			saveBD(req.params.device,803,'OK');
 			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid ' + res.statusCode);
 			return next();	
 		}
 		else{
 			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid ' + res.statusCode);
-			saveBD(req.params.device,802,error);
+			saveBD(req.params.device,803,error);
 			return next(new restify.InvalidArgumentError((result.results)[0].error));
 		}
 	});
