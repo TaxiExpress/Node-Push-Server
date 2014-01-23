@@ -60,11 +60,11 @@ function sendClosestTaxi(req , res , next){
 		if (result.success === 1){
 			res.send(201 , result);
 			saveBD(req.params.device,801,'OK');
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi          ' + res.statusCode);
 			return next();	
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi          ' + res.statusCode);
 			saveBD(req.params.device,801,error);
 			return next(new restify.InvalidArgumentError((result.results)[0].error));
 		}
@@ -97,11 +97,11 @@ function sendSelectedTaxi(req , res , next){
 		if (result.success === 1){
 			res.send(201 , result);
 			saveBD(req.params.device,802,'OK');
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode);
 			return next();	
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode);
 			saveBD(req.params.device,802,error);
 			return next(new restify.InvalidArgumentError((result.results)[0].error));
 		}
@@ -134,11 +134,11 @@ function sendAcceptTravel(req , res , next){
 		if (result.success === 1){
 			res.send(201 , result);
 			saveBD(req.params.device,701,'OK');
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel         ' + res.statusCode);
 			return next();	
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel ' + res.statusCode);
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel         ' + res.statusCode);
 			saveBD(req.params.device,701,error);
 			return next(new restify.InvalidArgumentError((result.results)[0].error));
 		}
@@ -170,11 +170,11 @@ function sendTravelCompleted(req , res , next){
 		if (result.success === 1){
 			res.send(201 , result);
 			saveBD(req.params.device,702,'OK');
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted      ' + res.statusCode);
 			return next();	
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted      ' + res.statusCode);
 			saveBD(req.params.device,702,error);
 			return next(new restify.InvalidArgumentError((result.results)[0].error));
 		}
@@ -205,11 +205,11 @@ function sendTravelPaid(req , res , next){
 		if (result.success === 1){
 			res.send(201 , result);
 			saveBD(req.params.device,803,'OK');
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid           ' + res.statusCode);
 			return next();	
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid ' + res.statusCode);
+        		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid           ' + res.statusCode);
 			saveBD(req.params.device,803,error);
 			return next(new restify.InvalidArgumentError((result.results)[0].error));
 		}
@@ -222,10 +222,10 @@ function getAllLogs(req, res , next){
     logs.find().limit(500).sort({postedOn : -1} , function(err , success){
         if(success){
         	res.send(200 , success);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs ' + res.statusCode);
+        	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode);
         	return next();
         }else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs ' + res.statusCode);
+        	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode);
         	return next(err);
         }
     });
