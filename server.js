@@ -222,10 +222,10 @@ function getAllLogs(req, res , next){
     logs.find().limit(500).sort({postedOn : -1} , function(err , success){
         if(success){
         	res.send(200 , success);
-        	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode);
+        	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs                     ' + res.statusCode);
         	return next();
         }else{
-        	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode);
+        	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs                     ' + res.statusCode);
         	return next(err);
         }
     });
