@@ -40,6 +40,8 @@ function sendClosestTaxi(req , res , next){
         message.addDataWithKeyValue('origin', req.params.origin);
         message.addDataWithKeyValue('startpoint', req.params.startpoint);
         message.addDataWithKeyValue('valuation', req.params.valuation);
+        message.addDataWithKeyValue('phone', req.params.phone);
+
         message.addDataWithKeyValue('code', 801);
         
         var sender = new gcm.Sender(GCMID);
@@ -86,6 +88,7 @@ function sendSelectedTaxi(req , res , next){
         message.addDataWithKeyValue('startpoint', req.params.startpoint);
         message.addDataWithKeyValue('valuation', req.params.valuation);
         message.addDataWithKeyValue('code', 802);
+        message.addDataWithKeyValue('phone', req.params.phone);
         
         var sender = new gcm.Sender(GCMID);
         var registrationIds = [];
