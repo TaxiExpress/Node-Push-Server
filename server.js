@@ -81,16 +81,16 @@ function sendSelectedTaxi(req , res , next){
 	message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
 	message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified
 	
-	message.addDataWithKeyValue('travelID', req.params.travelID);
-	message.addDataWithKeyValue('origin', req.params.origin);
-	message.addDataWithKeyValue('startpoint', req.params.startpoint);
-	message.addDataWithKeyValue('valuation', req.params.valuation);
+	message.addDataWithKeyValue('travelID', req.params.title);
+	message.addDataWithKeyValue('origin', req.params.device);
+	message.addDataWithKeyValue('startpoint', req.params.reqMessage);
+	message.addDataWithKeyValue('valuation', 'aaa');
 	message.addDataWithKeyValue('code', 802);
 	
 	var sender = new gcm.Sender(GCMID);
 	var registrationIds = [];
 	if (req.params.pushId != '')
-	registrationIds.push(req.params.pushId0);
+	registrationIds.push(req.params.pushId);
 
 	
 	sender.send(message, registrationIds, 4, function (err, result) {
