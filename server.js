@@ -130,7 +130,7 @@ function sendAcceptTravel(req , res , next){
         var sender = new gcm.Sender(GCMID);
         var registrationIds = [];
         if (req.params.pushId != '')
-        registrationIds.push(req.params.pushId0);
+        registrationIds.push(req.params.pushId);
 
         
         sender.send(message, registrationIds, 4, function (err, result) {
@@ -166,7 +166,7 @@ function sendTravelCompleted(req , res , next){
         var sender = new gcm.Sender(GCMID);
         var registrationIds = [];
         if (req.params.pushId != '')
-        registrationIds.push(req.params.pushId0);
+        registrationIds.push(req.params.pushId);
 
         
         sender.send(message, registrationIds, 4, function (err, result) {
@@ -201,7 +201,7 @@ function sendTravelPaid(req , res , next){
         var sender = new gcm.Sender(GCMID);
         var registrationIds = [];
         if (req.params.pushId != '')
-        registrationIds.push(req.params.pushId0);
+        registrationIds.push(req.params.pushId);
 
         
         sender.send(message, registrationIds, 4, function (err, result) {
