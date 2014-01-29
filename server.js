@@ -3,7 +3,7 @@ var gcm = require('node-gcm');
 var mongojs = require('mongojs');
 var apn = require('apn');
 
-var ip_addr = '0.0.0.0';
+var ip_addr = '127.0.0.1';
 var port = '8080';
 
 var GCMID = 'AIzaSyCiWYVCwBJVfjg3Y9-CQm4VMe4eO1zsGgM'; // MUST change with your "GCM API Key for Browser Applications"     
@@ -67,13 +67,13 @@ function sendClosestTaxi(req , res , next){
 					if (result.success === 1){
 							res.send(201 , result);
 							saveBD(req.params.device,801,'OK');
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi           ' + res.statusCode + '   ' + req.params.device);
-							return next();        
+							return next();
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi           ' + res.statusCode + '   ' + req.params.device);							
 					}
 					else{
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi           ' + res.statusCode + '   ' + req.params.device);
 							saveBD(req.params.device,801,err);
 							return next(new restify.InvalidArgumentError((result.results)[0].error));
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi           ' + res.statusCode + '   ' + req.params.device);
 					}
 			});
 		}
@@ -131,13 +131,13 @@ function sendSelectedTaxi(req , res , next){
 					if (result.success === 1){
 							res.send(201 , result);
 							saveBD(req.params.device,802,'OK');
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode + '   ' + req.params.device);
-							return next();        
+							return next();  
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi          ' + res.statusCode + '   ' + req.params.device);							
 					}
 					else{
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi         ' + res.statusCode + '   ' + req.params.device);
 							saveBD(req.params.device,802,err);
 							return next(new restify.InvalidArgumentError((result.results)[0].error));
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi          ' + res.statusCode + '   ' + req.params.device);
 					}
 			});
 		}
@@ -194,13 +194,13 @@ function sendAcceptTravel(req , res , next){
 					if (result.success === 1){
 							res.send(201 , result);
 							saveBD(req.params.device,701,'OK');
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel         ' + res.statusCode + '   ' + req.params.device);
-							return next();        
+							return next();  
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel          ' + res.statusCode + '   ' + req.params.device);							
 					}
 					else{
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel         ' + res.statusCode + '   ' + req.params.device);
 							saveBD(req.params.device,701,err);
 							return next(new restify.InvalidArgumentError((result.results)[0].error));
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel          ' + res.statusCode + '   ' + req.params.device);
 					}
 			});
 		}
@@ -253,13 +253,13 @@ function sendTravelCompleted(req , res , next){
 					if (result.success === 1){
 							res.send(201 , result);
 							saveBD(req.params.device,702,'OK');
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted   ' + res.statusCode + '   ' + req.params.device);
-							return next();        
+							return next();       
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted       ' + res.statusCode + '   ' + req.params.device);							
 					}
 					else{
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted   ' + res.statusCode + '   ' + req.params.device);
 							saveBD(req.params.device,702,err);
 							return next(new restify.InvalidArgumentError((result.results)[0].error));
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted       ' + res.statusCode + '   ' + req.params.device);
 					}
 			});
 		}
@@ -310,13 +310,13 @@ function sendTravelPaid(req , res , next){
 					if (result.success === 1){
 							res.send(201 , result);
 							saveBD(req.params.device,803,'OK');
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             ' + res.statusCode + '   ' + req.params.device);
 							return next();        
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid            ' + res.statusCode + '   ' + req.params.device);
 					}
 					else{
-							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             ' + res.statusCode + '   ' + req.params.device);
 							saveBD(req.params.device,803,err);
 							return next(new restify.InvalidArgumentError((result.results)[0].error));
+							console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid            ' + res.statusCode + '   ' + req.params.device);
 					}
 			});
 		}
@@ -349,11 +349,11 @@ function getAllLogs(req, res , next){
     logs.find().limit(500).sort({postedOn : -1} , function(err , success){
         if(success){
                 res.send(200 , success);
-                console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs                      ' + res.statusCode);
                 return next();
-        }else{
                 console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs                      ' + res.statusCode);
+        }else{
                 return next(err);
+                console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs                      ' + res.statusCode);
         }
     });
 }
