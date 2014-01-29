@@ -3,7 +3,7 @@ var gcm = require('node-gcm');
 var mongojs = require('mongojs');
 var apn = require('apn');
 
-var ip_addr = '127.0.0.1';
+var ip_addr = '0.0.0.0';
 var port = '8080';
 
 var GCMID = 'AIzaSyCiWYVCwBJVfjg3Y9-CQm4VMe4eO1zsGgM'; // MUST change with your "GCM API Key for Browser Applications"     
