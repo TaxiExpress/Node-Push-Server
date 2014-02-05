@@ -173,7 +173,7 @@ function sendAcceptTravel(req , res , next){
 	if (req.params.device === 'ANDROID'){
 		var message = new gcm.Message();
 		message.addData('message','SendAcceptTravel');
-		message.addData('title','Taxi Express');
+		message.addData('title','El taxista ha aceptado su solicitud');
 		message.addData('msgcnt','1'); // Shows up in the notification in the status bar
 		message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
 		message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified
@@ -230,7 +230,7 @@ function sendTravelCompleted(req , res , next){
 	if (req.params.device === 'ANDROID'){
 		var message = new gcm.Message();
 		message.addData('message','SendTravelCompleted');
-		message.addData('title','Taxi Express');
+		message.addData('title','Pago del trayecto');
 		message.addData('msgcnt','1'); // Shows up in the notification in the status bar
 		message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
 		message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified
@@ -342,7 +342,7 @@ function sendTravelCanceled(req , res , next){
 	if (req.params.device === 'ANDROID'){
 		var message = new gcm.Message();
 		message.addData('message', 'SendTravelCanceled');
-		message.addData('title','Taxi Express');
+		message.addData('title','El taxista ha cancelado el viaje. Puede buscar otro.');
 		message.addData('msgcnt','1'); // Shows up in the notification in the status bar
 		message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
 		message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified
@@ -374,7 +374,7 @@ function sendTravelCanceled(req , res , next){
 		message.expiry = Math.floor(Date.now() / 1000) + 3600; 	
 		message.badge = '1';
 		message.sound = 'ping.aiff';
-		message.alert = 'Taxi Express';
+		message.alert = 'El taxista ha cancelado el viaje. Puede buscar otro.';
 		message.payload = {'travelID' : req.params.travelID,
 							'code': 703
 						}; 
