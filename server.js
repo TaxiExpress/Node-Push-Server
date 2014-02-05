@@ -335,6 +335,59 @@ function sendTravelPaid(req , res , next){
 	}
 }
 
+function sendTravelCanceled(req , res , next){
+	res.setHeader('Access-Control-Allow-Origin','*');
+	
+	if (req.params.device === 'ANDROID'){
+		var message = new gcm.Message();
+		message.addData('message', 'SendTravelCanceled');
+		message.addData('title','Taxi Express');
+		message.addData('msgcnt','1'); // Shows up in the notification in the status bar
+		message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
+		message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified
+		
+		message.addDataWithKeyValue('travelID', req.params.travelID);
+		message.addDataWithKeyValue('code', 703);
+		
+		var registrationIds = [];
+		if (req.params.pushId != '')
+			registrationIds.push(req.params.pushId);
+		
+		GCMSender.send(message, registrationIds, 4, function (err, result) {
+			if (result.success === 1){
+				res.send(201 , result);
+				saveBD(req.params.device,703,'OK');
+				console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled            ' + res.statusCode + '   ' + req.params.device);
+				return next();        
+			}
+			else{
+				saveBD(req.params.device,703,err);
+				console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled            ' + res.statusCode + '   ' + req.params.device);
+				return next(new restify.InvalidArgumentError((result.results)[0].error));
+			}
+		});
+	}
+	
+	else if (req.params.device === 'IOS'){	
+		var message = new apn.Notification();
+		message.expiry = Math.floor(Date.now() / 1000) + 3600; 	
+		message.badge = '1';
+		message.sound = 'ping.aiff';
+		message.alert = 'Taxi Express';
+		message.payload = {'travelID' : req.params.travelID,
+							'code': 703
+						}; 
+		
+		var destionationDevice = new apn.Device(req.params.pushId);
+		apnConnection.pushNotification(message, destionationDevice);
+		
+		res.send(201, 'OK');
+		saveBD(req.params.device,703,'OK');
+		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled            ' + res.statusCode + '   ' + req.params.device);
+		return next();	
+	}
+}
+
 function getAllLogs(req, res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 
