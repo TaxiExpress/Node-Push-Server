@@ -30,6 +30,7 @@ server.post({path : '/sendSelectedTaxi' , version: '0.0.1'} , sendSelectedTaxi);
 server.post({path : '/sendAcceptTravel' , version: '0.0.1'} , sendAcceptTravel);
 server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompleted);
 server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
+server.post({path : '/sendTravelCanceled' , version: '0.0.1'} , sendTravelCanceled);
 server.get({path : '/logs' , version : '0.0.1'} , getAllLogs);
 
 function sendClosestTaxi(req , res , next){
