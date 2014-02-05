@@ -340,7 +340,7 @@ function sendTravelCanceled(req , res , next){
 	
 	if (req.params.device === 'ANDROID'){
 		var message = new gcm.Message();
-		message.addData('message', 'SendTravelPaid');
+		message.addData('message', 'SendTravelCanceled');
 		message.addData('title','Taxi Express');
 		message.addData('msgcnt','1'); // Shows up in the notification in the status bar
 		message.addData('soundname','beep.wav'); //Sound to play upon notification receipt - put in the www folder in app
@@ -357,12 +357,12 @@ function sendTravelCanceled(req , res , next){
 			if (result.success === 1){
 				res.send(201 , result);
 				saveBD(req.params.device,703,'OK');
-				console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid            ' + res.statusCode + '   ' + req.params.device);
+				console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled            ' + res.statusCode + '   ' + req.params.device);
 				return next();        
 			}
 			else{
 				saveBD(req.params.device,703,err);
-				console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid            ' + res.statusCode + '   ' + req.params.device);
+				console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled            ' + res.statusCode + '   ' + req.params.device);
 				return next(new restify.InvalidArgumentError((result.results)[0].error));
 			}
 		});
@@ -383,7 +383,7 @@ function sendTravelCanceled(req , res , next){
 		
 		res.send(201, 'OK');
 		saveBD(req.params.device,703,'OK');
-		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid            ' + res.statusCode + '   ' + req.params.device);
+		console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled            ' + res.statusCode + '   ' + req.params.device);
 		return next();	
 	}
 }
