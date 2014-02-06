@@ -27,7 +27,6 @@ pushId:'a1d561ed1a6a037c90603fd2b18c8ce2dc229863091cd4f3dc67a86691edc28c'
 });
 
 
-
 client.post('/sendAcceptTravel', { latitude: '2125',  longitude:'4556', travelID: '01', device: 'IOS',
 pushId:'a1d561ed1a6a037c90603fd2b18c8ce2dc229863091cd4f3dc67a86691edc28c'
  }, function(err, req, res, data) {
