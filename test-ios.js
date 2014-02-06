@@ -6,12 +6,6 @@ var client = restify.createJsonClient({
 	version: '0.0.1'
 });
 
-client.get('/logs', function (err, req, res, obj) {
-	assert.ifError(err);
-	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  GET:  /logs                     ' + res.statusCode);
-});
-
-
 client.post('/sendClosestTaxi', { origin: 'world',  startpoint:'Pues que bien', travelID: 'android',valuation:'Pues que bien', device: 'IOS', phone: '666666666',
 pushId0:'a1d561ed1a6a037c90603fd2b18c8ce2dc229863091cd4f3dc67a86691edc28c',
 pushId1:'',
