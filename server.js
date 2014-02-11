@@ -52,7 +52,7 @@ function sendClosestTaxi(req , res , next){
 
 function sendSelectedTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
-
+	console.log('olaaa');
 	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: 'ssss', valuation : req.params.valuation, phone : req.params.phone, code : 802};
 	console.log(pushId);
 
