@@ -64,12 +64,12 @@ function sendSelectedTaxi(req , res , next){
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
 			res.send(201);
-			return next();
 			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi           ' + res.statusCode);							
+			return next();
 		}
 		else{
-			return next(new restify.InvalidArgumentError(result));
 			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi           ' + res.statusCode);
+			return next(new restify.InvalidArgumentError(result));
 		}
 	});
 }
