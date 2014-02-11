@@ -55,6 +55,7 @@ function sendSelectedTaxi(req , res , next){
 	
 	console.log(req.params.startpoint);
 	console.log(req.params.startpoint[0]);
+	console.log(req.params.startpoint[1]);
 	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint1: req.params.startpoint[0], startpoint2: req.params.startpoint[1], valuation : req.params.valuation, phone : req.params.phone, code : 802};
 
 	stratton.sendPush(req.params.pushId, data, function (result){
