@@ -52,11 +52,8 @@ function sendClosestTaxi(req , res , next){
 
 function sendSelectedTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
-	
-	console.log(req.params.startpoint);
-	console.log(req.params.startpoint[0]);
-	console.log(req.params.startpoint[1]);
-	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint1: req.params.startpoint[0].toString(), startpoint2: req.params.startpoint[1].toString(), valuation : req.params.valuation, phone : req.params.phone, code : 802};
+
+	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: 'sssss', valuation : req.params.valuation, phone : req.params.phone, code : 802};
 
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
