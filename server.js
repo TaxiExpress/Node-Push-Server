@@ -40,11 +40,11 @@ function sendClosestTaxi(req , res , next){
 	stratton.sendPush(pushId, data, function (result){
 		if (result){
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi           ' + res.statusCode);							
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi            ' + res.statusCode);							
 			return next();
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi           409');
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi            409');
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
