@@ -93,11 +93,11 @@ function sendTravelCompleted(req , res , next){
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted           ' + res.statusCode);							
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted        ' + res.statusCode);							
 			return next();
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted           409');
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted        409');
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
@@ -111,11 +111,11 @@ function sendTravelPaid(req , res , next){
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid           ' + res.statusCode);							
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             ' + res.statusCode);							
 			return next();
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid           409');
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             409');
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
@@ -129,11 +129,11 @@ function sendTravelCanceled(req , res , next){
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled        ' + res.statusCode);							
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled         ' + res.statusCode);							
 			return next();
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled        409');
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled         409');
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
