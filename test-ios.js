@@ -42,12 +42,12 @@ client.post('/sendTravelPaid', { paid:'true', travelID: '01', device: 'IOS',
 pushId:'a1d561ed1a6a037c90603fd2b18c8ce2dc229863091cd4f3dc67a86691edc28c'
  }, function(err, req, res, data) {
 	assert.ifError(err); 
-	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid        ' + res.statusCode);
+	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid           ' + res.statusCode);
 });
 
 client.post('/sendTravelCanceled', {travelID: '01', device: 'IOS',
 pushId:'a1d561ed1a6a037c90603fd2b18c8ce2dc229863091cd4f3dc67a86691edc28c'
  }, function(err, req, res, data) {
 	assert.ifError(err); 
-	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled           ' + res.statusCode);
+	console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled        ' + res.statusCode);
 });
