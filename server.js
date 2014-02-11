@@ -138,10 +138,10 @@ function sendTravelCanceled(req , res , next){
 		if (result){
 			res.send(201);
 			return next();
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled           ' + res.statusCode);							
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled        ' + res.statusCode);							
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled           ' + res.statusCode);
+			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled        ' + res.statusCode);
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
