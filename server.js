@@ -52,8 +52,8 @@ function sendClosestTaxi(req , res , next){
 
 function sendSelectedTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
-	console.log(req.params.pushId);
-	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: 'ssss', valuation : req.params.valuation, phone : req.params.phone, code : 802};
+	
+	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.valuation[0] +" , " + req.params.valuation[1], valuation : req.params.valuation, phone : req.params.phone, code : 802};
 
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
@@ -142,4 +142,3 @@ function sendTravelCanceled(req , res , next){
 server.listen(port ,ip_addr, function(){
 	console.log('%s listening at %s ', server.name , server.url);
 });
-
