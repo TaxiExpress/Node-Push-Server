@@ -34,8 +34,12 @@ function sendClosestTaxi(req , res , next){
 		pushId.push(req.params.pushId3);
 	if (req.params.pushId4 != '')
 		pushId.push(req.params.pushId4);	
+	
+	
+	data = {title : 'Taxi Express' , message : 'SendClosestTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint, valuation : req.params.valuation, phone : req.params.phone, code : 801};
+	console.log('aaa');
+	console.log(data);
 
-	data = {title : 'Taxi Express' , message : 'SendClosestTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint, valuation : req.params.valuation, phone : req.params.phone, code : 801}
 	
 	stratton.sendPush(pushId, data, function (result){
 		if (result){
@@ -53,7 +57,9 @@ function sendClosestTaxi(req , res , next){
 function sendSelectedTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 
-	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint, valuation : req.params.valuation, phone : req.params.phone, code : 802}
+	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint, valuation : req.params.valuation, phone : req.params.phone, code : 802};
+	console.log('bbb');
+	console.log(data);
 	
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
@@ -70,7 +76,7 @@ function sendSelectedTaxi(req , res , next){
 
 function sendAcceptTravel(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
-	data = {title : 'El taxista ha aceptado su solicitud' , message : 'SendAcceptTravel', travelID : req.params.travelID , latitude: req.params.latitude, longitude: req.params.longitude, code : 701}
+	data = {title : 'El taxista ha aceptado su solicitud' , message : 'SendAcceptTravel', travelID : req.params.travelID , latitude: req.params.latitude, longitude: req.params.longitude, code : 701};
 	
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
@@ -88,7 +94,7 @@ function sendAcceptTravel(req , res , next){
 function sendTravelCompleted(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 	
-	data = {title : 'Pago del trayecto' , message : 'SendTravelCompleted', travelID : req.params.travelID , cost: req.params.cost, appPayment: req.params.appPayment, code : 702}
+	data = {title : 'Pago del trayecto' , message : 'SendTravelCompleted', travelID : req.params.travelID , cost: req.params.cost, appPayment: req.params.appPayment, code : 702};
 	
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
@@ -106,7 +112,7 @@ function sendTravelCompleted(req , res , next){
 function sendTravelPaid(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 
-	data = {title : 'Taxi Express' , message : 'SendTravelPaid', travelID : req.params.travelID , paid: req.params.paid, code : 803}
+	data = {title : 'Taxi Express' , message : 'SendTravelPaid', travelID : req.params.travelID , paid: req.params.paid, code : 803};
 	
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
@@ -124,7 +130,9 @@ function sendTravelPaid(req , res , next){
 function sendTravelCanceled(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 
-	data = {title : 'Taxi Express' , message : 'SendTravelCanceled', travelID : req.params.travelID , code : 703}
+	data = {title : 'Taxi Express' , message : 'SendTravelCanceled', travelID : req.params.travelID , code : 703};
+	console.log('ccc');
+	console.log(data);	
 	
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result){
