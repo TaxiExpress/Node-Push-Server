@@ -22,8 +22,7 @@ server.post({path : '/sendTravelCanceled' , version: '0.0.1'} , sendTravelCancel
 
 function sendClosestTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
-	console.log('Entramos en sendClosestTaxi ');
-	console.log(req.params.pushId0);
+	
 	var pushId = [];
 	if (req.params.pushId0 != '')
 		pushId.push(req.params.pushId0);
