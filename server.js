@@ -24,18 +24,9 @@ function sendClosestTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 	console.log('Entramos en sendClosestTaxi ');
 	console.log(req.params.pushId0);
-	cpnsle
 	var pushId = [];
 	if (req.params.pushId0 != '')
 		pushId.push(req.params.pushId0);
-	if (req.params.pushId1 != '')
-		pushId.push(req.params.pushId1);
-	if (req.params.pushId2 != '')       
-		pushId.push(req.params.pushId2);
-	if (req.params.pushId3 != '')       
-		pushId.push(req.params.pushId3);
-	if (req.params.pushId4 != '')
-		pushId.push(req.params.pushId4);	
 	
 		
 	console.log(req.params.title);
