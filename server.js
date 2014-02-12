@@ -23,6 +23,8 @@ server.post({path : '/sendTravelCanceled' , version: '0.0.1'} , sendTravelCancel
 function sendClosestTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 	console.log('Entramos en sendClosestTaxi ');
+	console.log(req.params.pushId0);
+	cpnsle
 	var pushId = [];
 	if (req.params.pushId0 != '')
 		pushId.push(req.params.pushId0);
@@ -36,6 +38,8 @@ function sendClosestTaxi(req , res , next){
 		pushId.push(req.params.pushId4);	
 	
 	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint[0] + "," + req.params.startpoint[1], valuation : req.params.valuation, phone: req.params.phone, code : 802};
+	
+	console.log(data);
 	
 	stratton.sendPush(pushId, data, function (result){
 		if (result){
