@@ -37,9 +37,18 @@ function sendClosestTaxi(req , res , next){
 	if (req.params.pushId4 != '')
 		pushId.push(req.params.pushId4);	
 	
-	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint[0] + "," + req.params.startpoint[1], valuation : req.params.valuation, phone: req.params.phone, code : 802};
+		
+	console.log(req.params.title);
+	console.log(req.params.travelID);
+	console.log(req.params.origin);
+	console.log(req.params.startpoint);
+	console.log(req.params.phone);
+	console.log(req.params.code);
 	
-	console.log(data);
+	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint[0] + "," + req.params.startpoint[1], valuation : req.params.valuation, phone: req.params.phone, code : 802};
+
+	console.log('aaa');
+
 	
 	stratton.sendPush(pushId, data, function (result){
 		if (result){
