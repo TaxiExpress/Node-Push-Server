@@ -13,12 +13,29 @@ server.use(restify.queryParser());
 server.use(restify.bodyParser());
 server.use(restify.CORS());
 
+server.post({path : '/push' , version: '0.0.1'}, sendPush);
 server.post({path : '/sendClosestTaxi' , version: '0.0.1'} , sendClosestTaxi);
 server.post({path : '/sendSelectedTaxi' , version: '0.0.1'} , sendSelectedTaxi);
 server.post({path : '/sendAcceptTravel' , version: '0.0.1'} , sendAcceptTravel);
 server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompleted);
 server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
 server.post({path : '/sendTravelCanceled' , version: '0.0.1'} , sendTravelCanceled);
+
+function sendPush(req, res, next){
+	res.setHeader('Access-Control-Allow-Origin', '*');
+
+	stratton.sendPush(req.params.pushId, data, function (result){
+		if (result===true){
+			res.send(201);
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + res.statusCode);
+			return next();    
+		}
+		else{
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + '409');
+			return next(new restify.InvalidArgumentError(result));
+		}
+	});
+}
 
 function sendClosestTaxi(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
