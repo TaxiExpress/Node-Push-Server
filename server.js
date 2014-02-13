@@ -25,7 +25,6 @@ function sendPush(req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', '*');
 
 	data = req.params;
-  	data.pushId = "0";
   	data.message = "0";
 
 
