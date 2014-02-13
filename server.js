@@ -80,23 +80,6 @@ function sendSelectedTaxi(req , res , next){
 	});
 }
 
-function sendAcceptTravel(req , res , next){
-	res.setHeader('Access-Control-Allow-Origin','*');
-	data = {title : 'El taxista ha aceptado su solicitud' , message : 'SendAcceptTravel', travelID : req.params.travelID , latitude: req.params.latitude, longitude: req.params.longitude, code : 701};
-	
-	stratton.sendPush(req.params.pushId, data, function (result){
-		if (result){
-			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel           ' + res.statusCode);							
-			return next();
-		}
-		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendAcceptTravel           409');
-			return next(new restify.InvalidArgumentError(result));
-		}
-	});
-}
-	
 function sendTravelCompleted(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
 	
