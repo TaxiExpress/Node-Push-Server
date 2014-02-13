@@ -23,7 +23,7 @@ server.post({path : '/sendTravelCanceled' , version: '0.0.1'} , sendTravelCancel
 
 function sendPush(req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', '*');
-
+	console.log (req.params);
 	stratton.sendPush(req.params.pushId, req.params, function (result){
 		if (result===true){
 			res.send(201);
