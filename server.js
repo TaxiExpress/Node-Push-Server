@@ -27,6 +27,8 @@ function sendPush(req, res, next){
 	data = req.params;
 	data.pushId = "0";
 	console.log(data);
+		data = {title : 'El taxista ha aceptado su solicitud' , message : 'SendAcceptTravel', travelID : req.params.travelID , latitude: req.params.latitude, longitude: req.params.longitude, code : 701};
+
 
 	stratton.sendPush(req.params.pushId, data, function (result){
 		if (result===true){
