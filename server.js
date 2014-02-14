@@ -25,6 +25,7 @@ function sendPush(req, res, next){
 	pushId = req.params.pushId;
 	data = req.params;
 	data.pushId = '0';
+	console.log(data);
 
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
