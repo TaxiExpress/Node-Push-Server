@@ -14,7 +14,7 @@ server.use(restify.bodyParser());
 server.use(restify.CORS());
 
 server.post({path : '/push' , version: '0.0.1'}, sendPush);
-server.post({path : '/get' , version: '0.0.1'}, getPaypal;
+server.post({path : '/get' , version: '0.0.1'}, getPaypal);
 
 server.post({path : '/sendClosestTaxi' , version: '0.0.1'} , sendClosestTaxi);
 server.post({path : '/sendSelectedTaxi' , version: '0.0.1'} , sendSelectedTaxi);
