@@ -30,11 +30,11 @@ function sendPush(req, res, next){
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + res.statusCode);
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + res.statusCode + '   ' + data.message);
 			return next();    
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + '409');
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + '409' + '   ' + data.message);
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
@@ -62,23 +62,6 @@ function sendClosestTaxi(req , res , next){
 	});
 }
 
-function sendSelectedTaxi(req , res , next){
-	res.setHeader('Access-Control-Allow-Origin','*');
-
-	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint[0] + "," + req.params.startpoint[1], valuation : req.params.valuation, phone: req.params.phone, code : 802};
-
-	stratton.sendPush(req.params.pushId, data, function (result){
-		if (result){
-			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi           ' + res.statusCode);							
-			return next();
-		}
-		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendSelectedTaxi           ' + res.statusCode);
-			return next(new restify.InvalidArgumentError(result));
-		}
-	});
-}
 
 function sendTravelCompleted(req , res , next){
 	res.setHeader('Access-Control-Allow-Origin','*');
@@ -111,24 +94,6 @@ function sendTravelPaid(req , res , next){
 		}
 		else{
 			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             409');
-			return next(new restify.InvalidArgumentError(result));
-		}
-	});
-}
-
-function sendTravelCanceled(req , res , next){
-	res.setHeader('Access-Control-Allow-Origin','*');
-
-	data = {title : 'Taxi Express' , message : 'SendTravelCanceled', travelID : req.params.travelID , code : 703};
-	
-	stratton.sendPush(req.params.pushId, data, function (result){
-		if (result){
-			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled         ' + res.statusCode);							
-			return next();
-		}
-		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCanceled         409');
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
