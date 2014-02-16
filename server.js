@@ -38,65 +38,6 @@ function sendPush(req, res, next){
 	});
 }
 
-function sendClosestTaxi(req , res , next){
-	res.setHeader('Access-Control-Allow-Origin','*');
-	
-	var pushId = [];
-	if (req.params.pushId0 != '')
-		pushId.push(req.params.pushId0);
-
-	data = {title : 'Taxi Express' , message : 'SendSelectedTaxi', travelID : req.params.travelID , origin: req.params.origin, startpoint: req.params.startpoint[0] + "," + req.params.startpoint[1], valuation : req.params.valuation, phone: req.params.phone, code : 802};
-
-	stratton.sendPush(pushId, data, function (result){
-		if (result){
-			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi            ' + res.statusCode);							
-			return next();
-		}
-		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendClosestTaxi            409');
-			return next(new restify.InvalidArgumentError(result));
-		}
-	});
-}
-
-
-function sendTravelCompleted(req , res , next){
-	res.setHeader('Access-Control-Allow-Origin','*');
-	
-	data = {title : 'Pago del trayecto' , message : 'SendTravelCompleted', travelID : req.params.travelID , cost: req.params.cost, appPayment: req.params.appPayment, code : 702};
-	
-	stratton.sendPush(req.params.pushId, data, function (result){
-		if (result){
-			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted        ' + res.statusCode);							
-			return next();
-		}
-		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelCompleted        409');
-			return next(new restify.InvalidArgumentError(result));
-		}
-	});
-}
-
-function sendTravelPaid(req , res , next){
-	res.setHeader('Access-Control-Allow-Origin','*');
-
-	data = {title : 'Taxi Express' , message : 'SendTravelPaid', travelID : req.params.travelID , paid: req.params.paid, code : 803};
-	
-	stratton.sendPush(req.params.pushId, data, function (result){
-		if (result){
-			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             ' + res.statusCode);							
-			return next();
-		}
-		else{
-			console.log (new Date().toJSON().slice(0,10) + '  ' + new Date().toLocaleTimeString()  + '  POST: /sendTravelPaid             409');
-			return next(new restify.InvalidArgumentError(result));
-		}
-	});
-}
-
 server.listen(port ,ip_addr, function(){
 	console.log('%s listening at %s ', server.name , server.url);
 });
