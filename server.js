@@ -20,6 +20,7 @@ server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompl
 server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
 
 function sendPush(req, res, next){
+	console.log('a');
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	pushId = req.params.pushId;
 	data = req.params;
