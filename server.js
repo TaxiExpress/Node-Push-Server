@@ -20,14 +20,12 @@ server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompl
 server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
 
 function sendPush(req, res, next){
-	console.log(req.params);
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	pushId = req.params.pushId;
 	data = req.params;
-	data.title = 'Viaje';
+	data.title = 'Viaje disponible';
 	data.startpoint = '43.2712209857423034,-2.9446877070918451';
 	data.pushId = '0';
-	console.log(data);
 
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
