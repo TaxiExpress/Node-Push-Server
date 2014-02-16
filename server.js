@@ -24,6 +24,7 @@ function sendPush(req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	pushId = req.params.pushId;
 	data = req.params;
+	data.title = 'Viaje';
 	data.startpoint = '43.2712209857423034,-2.9446877070918451';
 	data.pushId = '0';
 	console.log(data);
