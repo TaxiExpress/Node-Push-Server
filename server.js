@@ -20,19 +20,21 @@ server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompl
 server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
 
 function sendPush(req, res, next){
+	console.log(req.params);
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	pushId = req.params.pushId;
 	data = req.params;
 	data.pushId = '0';
+	console.log(data);
 
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + res.statusCode + '   ' + data.message);
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + res.statusCode);
 			return next();    
 		}
 		else{
-			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + '409' + '   ' + data.message);
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + '409');
 			return next(new restify.InvalidArgumentError(result));
 		}
 	});
