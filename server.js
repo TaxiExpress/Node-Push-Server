@@ -26,7 +26,6 @@ function sendPush(req, res, next){
 	data = req.params;
 	data.startpoint = '43.2712209857423034,-2.9446877070918451';
 	data.pushId = '0';
-	data.email = '12345';
 	console.log(data);
 
 	stratton.sendPush(pushId, data, function (result){
