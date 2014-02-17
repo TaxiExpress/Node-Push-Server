@@ -14,9 +14,6 @@ server.use(restify.bodyParser());
 server.use(restify.CORS());
 
 server.post({path : '/push' , version: '0.0.1'}, sendPush);
-server.post({path : '/sendClosestTaxi' , version: '0.0.1'} , sendClosestTaxi);
-server.post({path : '/sendTravelCompleted' , version: '0.0.1'} , sendTravelCompleted);
-server.post({path : '/sendTravelPaid' , version: '0.0.1'} , sendTravelPaid);
 
 function sendPush(req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', '*');
