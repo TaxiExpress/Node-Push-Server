@@ -23,8 +23,8 @@ function sendPush(req, res, next){
 
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
+			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push 201');
 			res.send(201);
-			console.log (new Date().toJSON().slice(0,10) + ' ' + new Date().toLocaleTimeString() + ' POST: /push ' + res.statusCode);
 			return next();    
 		}
 		else{
