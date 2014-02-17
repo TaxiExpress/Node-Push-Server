@@ -23,7 +23,6 @@ function sendPush(req, res, next){
 	pushId = req.params.pushId;
 	data = req.params;
 	data.pushId = '0';
-	data.startpoint = '43.2712209857423034,-2.9446877070918451';
 
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
