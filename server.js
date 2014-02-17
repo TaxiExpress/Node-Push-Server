@@ -19,7 +19,9 @@ function sendPush(req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', '*');
 	pushId = req.params.pushId;
 	data = req.params;
+	console.log(data);
 	data.pushId = '0';
+	console.log(data);
 
 	stratton.sendPush(pushId, data, function (result){
 		if (result===true){
