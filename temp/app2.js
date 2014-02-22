@@ -1,8 +1,8 @@
 var https = require('https');
 var express = require('express');
 var fs = require('fs');
-var keyFilePath = 'ssl/server.key';
-var certFilePath = 'ssl/server.crt';
+var keyFilePath = 'ssl/server2.key';
+var certFilePath = 'ssl/server2.crt';
 var app = express();
 var cors = require('cors');
 
