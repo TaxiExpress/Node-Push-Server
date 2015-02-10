@@ -2,7 +2,7 @@ var assert = require('assert');
 var restify = require('restify');
 
 var client = restify.createJsonClient({
-	url: 'http://127.6.39.129:8080',
+	url: process.env.OPENSHIFT_NODEJS_IP + ':' + parseInt(process.env.OPENSHIFT_NODEJS_PORT),
 	version: '0.0.1'
 });
 
