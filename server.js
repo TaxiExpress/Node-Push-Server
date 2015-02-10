@@ -1,8 +1,8 @@
 var restify = require('restify');
 var stratton = require('stratton');
 
-var ip_addr = process.env.OPENSHIFT_INTERNAL_IP;
-var port = process.env.OPENSHIFT_INTERNAL_PORT;
+var ip_addr = process.env.OPENSHIFT_NODEJS_IP;
+var port = parseInt(process.env.OPENSHIFT_NODEJS_PORT) || 8080;
 
 var server = restify.createServer({
     name : 'Node RESTful Push Server',
