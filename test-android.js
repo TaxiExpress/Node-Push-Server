@@ -2,7 +2,7 @@ var assert = require('assert');
 var restify = require('restify');
 
 var client = restify.createJsonClient({
-	url: 'http://ec2-54-84-17-105.compute-1.amazonaws.com:8080',
+	url: 'http://127.6.39.129:8080',
 	version: '0.0.1'
 });
 
