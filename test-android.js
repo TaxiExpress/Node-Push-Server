@@ -1,8 +1,9 @@
 var assert = require('assert');
 var restify = require('restify');
+var temp = process.env.OPENSHIFT_NODEJS_IP && ':' && parseInt(process.env.OPENSHIFT_NODEJS_PORT);
 
 var client = restify.createJsonClient({
-	url: process.env.OPENSHIFT_NODEJS_IP && ':' && parseInt(process.env.OPENSHIFT_NODEJS_PORT),
+	url: temp,
 	version: '0.0.1'
 });
 
